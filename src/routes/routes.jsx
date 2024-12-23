@@ -4,24 +4,30 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Error from "../pages/Error";
+import AddTutorials from "../pages/AddTutorials";
+import Private from "../private/Private";
 
 const routes = createBrowserRouter([
     {
         path: "/",
         element: <MainLayouts></MainLayouts>,
-        errorElement : <Error></Error>,
-        children : [
+        errorElement: <Error></Error>,
+        children: [
             {
-                path : '/',
-                element : <Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
             {
-                path : '/login',
-                element : <Login></Login>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path : '/signUp',
-                element : <SignUp></SignUp>
+                path: '/signUp',
+                element: <SignUp></SignUp>
+            },
+            {
+                path: '/add-tutorial',
+                element: <Private><AddTutorials></AddTutorials></Private>
             }
         ]
     },

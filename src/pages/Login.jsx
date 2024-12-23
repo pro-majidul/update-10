@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useUsers from '../hooks/useUsers';
 import { toast } from 'react-toastify';
 import loginImg from '../assets/SignUp.json'
 import Lottie from 'lottie-react';
 const Login = () => {
     const { setUser, googleLogin, loginUser } = useUsers();
-
+    const location = useLocation()
+    const navigate = useNavigate()
     const handelLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -14,10 +15,18 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
         loginUser(email, password)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then(result => {
+                console.log(result);
+                toast.success('user login Success')
+                setUser(result.user)
+                navigate(location.state ? location.state : '/')
             })
+            .catch(error => {
+                console.log(error);
+                toast.error(`${error.code}`)
+
+            })
+
 
 
     }
@@ -27,8 +36,9 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 console.log(result.user);
-                setUser(result)
+                setUser(result.user)
                 toast.success('user login Success')
+                navigate(location.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error);
