@@ -1,5 +1,6 @@
 import React from 'react';
 import useUsers from '../hooks/useUsers';
+import { toast } from 'react-toastify';
 
 const AddTutorials = () => {
     const { user } = useUsers()
@@ -10,7 +11,20 @@ const AddTutorials = () => {
         const formdata = Object.fromEntries(form.entries());
         const { ...newdata } = formdata;
         newdata.review = 0;
-        console.log("new data added ",newdata);
+        console.log("new data added ", newdata);
+        fetch('http://localhost:5000/tutors', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newdata)
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    toast.success('Tutorials Added SuccessFull')
+                }
+            })
 
     }
     return (
