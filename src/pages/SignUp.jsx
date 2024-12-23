@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import signUpImg from '../assets/login.json'
+import Lottie from 'lottie-react';
 
 const SignUp = () => {
     const handelSignUp = e => {
@@ -15,7 +17,10 @@ const SignUp = () => {
 
     }
     return (
-        <div className='flex items-center justify-center py-5 my-5'>
+        <div className='md:flex items-center gap-2 justify-center py-5 my-5'>
+            <div>
+                <Lottie animationData={signUpImg}></Lottie>
+            </div>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-200 dark:text-gray-800">
                 <h1 className="text-2xl font-bold text-center">Sign Up</h1>
                 <form onSubmit={handelSignUp} className="space-y-6">

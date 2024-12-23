@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useUsers from '../hooks/useUsers';
 import { toast } from 'react-toastify';
-
+import loginImg from '../assets/SignUp.json'
+import Lottie from 'lottie-react';
 const Login = () => {
     const { setUser, googleLogin, loginUser } = useUsers();
 
@@ -38,7 +39,7 @@ const Login = () => {
     }
 
     return (
-        <div className='flex items-center justify-center my-5 py-5'>
+        <div className='md:flex items-center justify-center gap-5 my-5 py-5'>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-200 dark:text-gray-800">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
 
@@ -72,6 +73,9 @@ const Login = () => {
                 <p className="text-md text-center dark:text-gray-600 my-5 py-5 w-full">Dont have account?
                     <Link to='/signUp' className="focus:underline hover:underline ml-1  text-red-400">Sign up here</Link>
                 </p>
+            </div>
+            <div>
+                <Lottie animationData={loginImg}></Lottie>
             </div>
         </div>
     );

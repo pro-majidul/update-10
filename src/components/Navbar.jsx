@@ -71,11 +71,11 @@ const Navbar = () => {
                             <div tabIndex={0}  >
                                 <img className='md:w-12 w-8  rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="" />
                             </div>
-                            <ul tabIndex={0} className="dropdown-content menu bg-green-500 rounded-box z-[1] w-28 mt-1  p-2 shadow">
-                                <li>{user.displayName}</li>
+                            <ul tabIndex={0} className="dropdown-content menu bg-green-500 rounded-box z-[1] w-24 md:w-48 mt-1  p-2 shadow">
+                                <li className='md:p-2 text-white md:text-xl md:font-medium'>{user.displayName}</li>
                             </ul>
                         </div>
-                        <button onClick={handelLogOut} className="btn md:bnt-md btn-sm btn-accent text-white hover:bg-green-300">Logout</button>
+                        <button onClick={handelLogOut} className="btn md:btn-md btn-sm btn-neutral text-white hover:bg-green-300">Logout</button>
                     </div> : <div>
                         <NavLink to='/login' className={({ isActive }) => isActive ? 'btn btn-accent text-white btn-sm md:btn-md  hover:bg-green-300' : 'btn md:btn-md btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}>Login</NavLink>
                     </div>
