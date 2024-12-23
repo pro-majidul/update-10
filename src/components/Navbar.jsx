@@ -1,10 +1,11 @@
 import React from 'react';
+import { GiTeacher } from 'react-icons/gi';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div className="navbar bg-base-100">
-            <div className="navbar-start">
+            <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg
@@ -32,10 +33,9 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-               <NavLink to='/' className='flex items-center md:text-2xl text-xl  gap-1 md:font-bold'>
-               <img className='h-8 ' src="https://i.ibb.co.com/CPdFCLc/images.png" alt="" />
-               Legendary Tutors
-               </NavLink>
+                <NavLink to='/' className='flex items-center md:text-4xl text-3xl  gap-1 md:font-bold'>
+                    <GiTeacher size={28} />Tutors
+                    </NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-5">
@@ -48,7 +48,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <NavLink to='/login' className="btn">Login</NavLink>
             </div>
         </div>
     );
