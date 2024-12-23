@@ -1,8 +1,25 @@
 import React from 'react';
 import { GiTeacher } from 'react-icons/gi';
 import { NavLink } from 'react-router-dom';
+import useUsers from '../hooks/useUsers';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+    const { user, setUser, logOutUser } = useUsers();
+
+    const handelLogOut = () => {
+        logOutUser()
+            .then(result => {
+                setUser(result);
+                console.log(result);
+                toast.success('user logOut SuccessFull')
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error(`${error.code}`)
+            })
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start ">
@@ -35,7 +52,7 @@ const Navbar = () => {
                 </div>
                 <NavLink to='/' className='flex items-center md:text-4xl text-3xl  gap-1 md:font-bold'>
                     <GiTeacher size={28} />Tutors
-                    </NavLink>
+                </NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-5">
@@ -48,7 +65,21 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to='/login' className="btn">Login</NavLink>
+                {
+                    user && user ? <div className='flex gap-1 items-center justify-center'>
+                        <div className="dropdown">
+                            <div tabIndex={0}  >
+                                <img className='md:w-12 w-8  rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="" />
+                            </div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-green-500 rounded-box z-[1] w-28 mt-1  p-2 shadow">
+                                <li>{user.displayName}</li>
+                            </ul>
+                        </div>
+                        <button onClick={handelLogOut} className="btn md:bnt-md btn-sm btn-accent text-white hover:bg-green-300">Logout</button>
+                    </div> : <div>
+                        <NavLink to='/login' className={({ isActive }) => isActive ? 'btn btn-accent text-white btn-sm md:btn-md  hover:bg-green-300' : 'btn md:btn-md btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}>Login</NavLink>
+                    </div>
+                }
             </div>
         </div>
     );
