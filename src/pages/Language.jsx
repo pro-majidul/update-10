@@ -11,7 +11,7 @@ const Language = () => {
                 <div className="container p-6 mx-auto space-y-8">
                     <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
                         {
-                            loaderData.map(items => <article key={items._id} className="flex flex-col dark:bg-gray-50">
+                            loaderData.map(items => <article key={items._id} className="flex flex-col hover:scale-105 transition dark:bg-gray-50">
 
                                 <img alt="" className="object-cover w-full h-52 dark:bg-gray-500" src={items.photo} />
 

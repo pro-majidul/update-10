@@ -46,7 +46,8 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/tutor/:details',
-                element: <Private><TutorDetails></TutorDetails></Private>
+                element: <Private><TutorDetails></TutorDetails></Private>,
+                loader : ({params}) => fetch(`http://localhost:5000/tutors/${params.details}`)
             },
             {
                 path: '/my-tutorial',
