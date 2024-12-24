@@ -2,17 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import signUpImg from '../assets/login.json'
 import Lottie from 'lottie-react';
+import useUsers from '../hooks/useUsers';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
+    const { setUser, createUser } = useUsers()
     const handelSignUp = e => {
-      e.preventDefault()
-        const form =(e.target);
+        e.preventDefault()
+        const form = (e.target);
         const name = form.name.value;
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        const profileInfo ={ name , email, password, photo};
-        console.log(profileInfo);
+        const profileInfo = { name, email, password, photo };
+        createUser(email, password)
+            .then(result => {
+                console.log(result);
+                setUser(result.user)
+                toast.success('User Sign In Success')
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error(`${error.message}`)
+            })
 
 
     }

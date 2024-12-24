@@ -1,25 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
-import { LiaFlagUsaSolid } from 'react-icons/lia';
+// import { LiaFlagUsaSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
 
 const Languages = () => {
+    const [languages, setLanguages] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/language')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setLanguages(data)
+            })
+    }, [])
+
     return (
         <section className="p-4 my-6 md:p-8 dark:bg-gray-100 dark:text-gray-800">
             <div className="container grid grid-cols-1 gap-6 m-4 mx-auto md:m-0 md:grid-cols-2 xl:grid-cols-3">
-                <Link>
-                    <div className="flex overflow-hidden rounded-lg md:p-6 p-4 transition hover:scale-x-105 hover:bg-purple-500 border dark:bg-gray-50 dark:text-gray-800">
-                        <div className="flex items-center justify-center px-4">
-                            <img className='w-10' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5YQ_-TuOBLR2YTCgDkinC_F81DJPBrVS9Ag&s" />
+                {
+                    languages.map(language => <Link key={language._id} to={`/find-tutors/${language.language}`}>
+                        <div className="flex overflow-hidden rounded-lg md:p-6 p-4 transition hover:scale-x-105 hover:bg-purple-500 border dark:bg-gray-50 dark:text-gray-800">
+                            <div className="flex items-center justify-center px-4">
+                                <img className='w-10' src={language.img} />
 
+                            </div>
+                            <div className="flex items-center justify-between flex-1 p-3">
+                                <p className="text-2xl font-semibold">{language.language} Tutors</p>
+                                <p><FaChevronRight /></p>
+                            </div>
                         </div>
-                        <div className="flex items-center justify-between flex-1 p-3">
-                            <p className="text-2xl font-semibold">English Tutors</p>
-                            <p><FaChevronRight /></p>
-                        </div>
-                    </div>
-                </Link>
-                <Link>
+                    </Link>)
+                }
+                {/* <Link>
                     <div className="flex overflow-hidden rounded-lg md:p-6 p-4 transition hover:scale-x-105 hover:bg-purple-500 border dark:bg-gray-50 dark:text-gray-800">
                         <div className="flex items-center justify-center px-4 ">
                             <img className='w-10' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq7vXPbFTWnXWdT6BV8oazjjJnhLcGMaBu_g&s" />
@@ -106,7 +119,7 @@ const Languages = () => {
                             <p><FaChevronRight /></p>
                         </div>
                     </div>
-                </Link>
+                </Link> */}
             </div>
         </section>
     );

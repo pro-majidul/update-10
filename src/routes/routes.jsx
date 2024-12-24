@@ -7,6 +7,10 @@ import Error from "../pages/Error";
 import AddTutorials from "../pages/AddTutorials";
 import Private from "../private/Private";
 import FindTutorials from "../pages/FindTutorials";
+import Language from "../pages/Language";
+import TutorDetails from "../pages/TutorDetails";
+import MyTutorials from "../pages/MyTutorials";
+import BookedTutors from "../pages/BookedTutors";
 
 const routes = createBrowserRouter([
     {
@@ -34,6 +38,23 @@ const routes = createBrowserRouter([
                 path: '/find-tutors',
                 element: <FindTutorials></FindTutorials>,
                 loader: () => fetch('http://localhost:5000/tutors')
+            },
+            {
+                path: '/find-tutors/:category',
+                element: <Language></Language>,
+                loader: ({ params }) => fetch(`http://localhost:5000/tutors?language=${params.category}`)
+            },
+            {
+                path: '/tutor/:details',
+                element: <Private><TutorDetails></TutorDetails></Private>
+            },
+            {
+                path: '/my-tutorial',
+                element: <Private><MyTutorials></MyTutorials></Private>
+            },
+            {
+                path: '/booked-tutor',
+                element: <Private><BookedTutors></BookedTutors></Private>
             }
         ]
     },
