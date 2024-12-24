@@ -8,26 +8,39 @@ const TutorDetails = () => {
     const loaderdata = useLoaderData()
     const [data, setLoader] = useState(loaderdata)
 
+
     const handelBooked = () => {
-        const { ...addbooked } = data
-        addbooked.userEmail = user.email
-        console.log(addbooked);
+
+        const bookingDetails = {
+            tutorId: data._id,
+            image: data.photo,
+            language: data.language,
+            price: data.price,
+            tutorEmail: data.email,
+            email: user.email,
+            name: data.name,
+        };
+
         fetch('http://localhost:5000/tutorBooked', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(addbooked)
+            body: JSON.stringify(bookingDetails)
         }).then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     toast.success('Tutors Booked SuccessFull')
                 }
+            }).catch(error => {
+                toast.error('You already Booked This Data')
+                console.log(error);
             })
 
-            
+
     }
+
+    console.log(data);
     return (
         <section className="dark:bg-gray-100 dark:text-gray-800">
             <div className="container max-w-6xl p-6 mx-auto ">
