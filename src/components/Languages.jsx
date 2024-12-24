@@ -5,16 +5,22 @@ import { Link } from 'react-router-dom';
 
 const Languages = () => {
     const [languages, setLanguages] = useState([]);
+    const [loader, setLoader] = useState(true)
 
     useEffect(() => {
         fetch('http://localhost:5000/language')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setLanguages(data)
+                setLoader(false)
+            }).catch(error => {
+                setLoader(false)
             })
     }, [])
 
+    if (loader) {
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    }
     return (
         <section className="p-4 my-6 md:p-8 dark:bg-gray-100 dark:text-gray-800">
             <div className="container grid grid-cols-1 gap-6 m-4 mx-auto md:m-0 md:grid-cols-2 xl:grid-cols-3">

@@ -1,9 +1,24 @@
-import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
 
 const Language = () => {
+    const { category } = useParams()
+    const [items, setItems] = useState([])
+    const [loader, setLoader] = useState(true)
+    useEffect(() => {
+        fetch(`http://localhost:5000/tutors?language=${category}`)
+            .then(res => res.json())
+            .then(data => {
+                setItems(data)
+                setLoader(false)
+            }).catch(error => {
+                setLoader(false)
+            })
+    }, [])
 
-    const loaderData = useLoaderData();
+    if (loader) {
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    }
 
     return (
         <div>
@@ -11,7 +26,7 @@ const Language = () => {
                 <div className="container p-6 mx-auto space-y-8">
                     <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
                         {
-                            loaderData.map(items => <article key={items._id} className="flex flex-col hover:scale-105 transition dark:bg-gray-50">
+                            items.map(items => <article key={items._id} className="flex flex-col hover:scale-105 transition dark:bg-gray-50">
 
                                 <img alt="" className="object-cover w-full h-52 dark:bg-gray-500" src={items.photo} />
 

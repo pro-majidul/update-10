@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="navbar bg-base-100">
             <div className="navbar-start ">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                    <div tabIndex={0} role="button" className="btn  btn-md btn-ghost lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -41,12 +41,12 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <NavLink to='/' className={({ isActive }) => isActive ? 'btn hover:bg-green-300 btn-accent text-black' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Home</NavLink>
-                        <NavLink to='/find-tutors' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Find Tutors</NavLink>
-                        <NavLink to='/add-tutorial' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Add Tutorials</NavLink>
-                        <NavLink to='/my-tutorial' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My Tutorials
+                        <NavLink to='/' className={({ isActive }) => isActive ? 'btn  btn-md hover:bg-green-300 btn-accent text-black' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Home</NavLink>
+                        <NavLink to='/find-tutors' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Find Tutors</NavLink>
+                        <NavLink to='/add-tutorial' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Add Tutorials</NavLink>
+                        <NavLink to='/my-tutorial' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My Tutorials
                         </NavLink>
-                        <NavLink to='/booked-tutor' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My booked tutors</NavLink>
+                        <NavLink to='/booked-tutor' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My booked tutors</NavLink>
 
                     </ul>
                 </div>
@@ -56,12 +56,12 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-5">
-                    <NavLink to='/' className={({ isActive }) => isActive ? 'btn hover:bg-green-300 btn-accent text-black' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Home</NavLink>
-                    <NavLink to='/find-tutors' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Find Tutors</NavLink>
-                    <NavLink to='/add-tutorial' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Add Tutorials</NavLink>
-                    <NavLink to='/my-tutorial' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My Tutorials
+                    <NavLink to='/' className={({ isActive }) => isActive ? 'btn  btn-md hover:bg-green-300 btn-accent text-black' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Home</NavLink>
+                    <NavLink to='/find-tutors' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Find Tutors</NavLink>
+                    <NavLink to='/add-tutorial' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md  btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Add Tutorials</NavLink>
+                    <NavLink to='/my-tutorial' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My Tutorials
                     </NavLink>
-                    <NavLink to='/booked-tutor' className={({ isActive }) => isActive ? 'btn btn-accent text-white hover:bg-green-300' : 'btn btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My booked tutors</NavLink>
+                    <NavLink to='/booked-tutor' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My booked tutors</NavLink>
                 </ul>
             </div>
             <div className="navbar-end">
@@ -75,9 +75,9 @@ const Navbar = () => {
                                 <li className='md:p-2 text-white md:text-xl md:font-medium'>{user.displayName}</li>
                             </ul>
                         </div>
-                        <button onClick={handelLogOut} className="btn md:btn-md btn-sm btn-neutral text-white hover:bg-green-300">Logout</button>
+                        <button onClick={handelLogOut} className="btn  md:btn-md btn-sm btn-neutral text-white hover:bg-green-300">Logout</button>
                     </div> : <div>
-                        <NavLink to='/login' className={({ isActive }) => isActive ? 'btn btn-accent text-white btn-sm md:btn-md  hover:bg-green-300' : 'btn md:btn-md btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}>Login</NavLink>
+                        <NavLink to='/login' className={({ isActive }) => isActive ? 'btn  btn-sm btn-accent text-white md:btn-md  hover:bg-green-300' : 'btn  btn-sm md:btn-md  btn-neutral text-lg font-medium text-white hover:bg-green-300'}>Login</NavLink>
                     </div>
                 }
             </div>

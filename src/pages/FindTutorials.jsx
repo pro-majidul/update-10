@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const FindTutorials = () => {
-    const loaderdata = useLoaderData()
-    const [data, setData] = useState(loaderdata)
-    console.log(data);
+    const [data, setData] = useState([])
+    const [loader, setLoader] = useState(true);
+    useEffect(() => {
+        fetch('http://localhost:5000/tutors')
+            .then(res => res.json())
+            .then(data => {
+                setData(data)
+                setLoader(false)
+            }).catch(error => {
+                setLoader(false)
+            })
+    }, [])
+
+    if (loader) {
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    }
     return (
         <div>
 

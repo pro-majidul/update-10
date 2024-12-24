@@ -37,17 +37,15 @@ const routes = createBrowserRouter([
             {
                 path: '/find-tutors',
                 element: <FindTutorials></FindTutorials>,
-                loader: () => fetch('http://localhost:5000/tutors')
             },
             {
                 path: '/find-tutors/:category',
-                element: <Language></Language>,
-                loader: ({ params }) => fetch(`http://localhost:5000/tutors?language=${params.category}`)
+                element: <Language></Language>
+
             },
             {
                 path: '/tutor/:details',
-                element: <Private><TutorDetails></TutorDetails></Private>,
-                loader : ({params}) => fetch(`http://localhost:5000/tutors/${params.details}`)
+                element: <Private><TutorDetails></TutorDetails></Private>
             },
             {
                 path: '/my-tutorial',

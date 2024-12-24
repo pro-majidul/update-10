@@ -28,7 +28,7 @@ const AddTutorials = () => {
 
     }
     return (
-        <div className="bg-bannerImg  bg-no-repeat bg-cover bg-center p-20">
+        <div className="bg-bannerImg  bg-no-repeat bg-cover bg-center md:p-20">
 
             <div className='bg-[#F4F3F0] p-10'>
                 <form onSubmit={handelAddTutorials} className="card-body">
