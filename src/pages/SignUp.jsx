@@ -1,33 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import signUpImg from '../assets/login.json'
 import Lottie from 'lottie-react';
 import useUsers from '../hooks/useUsers';
 import { toast } from 'react-toastify';
 
 const SignUp = () => {
-    const { setUser, createUser } = useUsers()
-    const handelSignUp = e => {
-        e.preventDefault()
-        const form = (e.target);
+    const { updateUserInfo, logOutUser, createUser } = useUsers()
+    const navigate = useNavigate();
+
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+
+        const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        const profileInfo = { name, email, password, photo };
+
         createUser(email, password)
-            .then(result => {
-                console.log(result);
-                setUser(result.user)
-                toast.success('User Sign In Success')
+            .then(() => {
+                updateUserInfo(name, photo)
+                    .then(() => {
+                        logOutUser()
+                            .then(() => {
+                                toast.success('User signed up successfully. Please sign in.');
+                                navigate('/login'); 
+                            })
+                            .catch((error) => {
+                                toast.error('Failed to log out. Please try again.');
+                            });
+                    })
+                    .catch((error) => {
+                        toast.error('Failed to update profile. Please try again.');
+                    });
             })
-            .catch(error => {
-                console.log(error);
-                toast.error(`${error.message}`)
-            })
+            .catch((error) => {
+                toast.error(`Sign-up failed: ${error.message}`);
+            });
+    };
 
-
-    }
     return (
         <div className='md:flex items-center gap-2 justify-center py-5 my-5'>
             <div>
@@ -35,7 +48,7 @@ const SignUp = () => {
             </div>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-200 dark:text-gray-800">
                 <h1 className="text-2xl font-bold text-center">Sign Up</h1>
-                <form onSubmit={handelSignUp} className="space-y-6">
+                <form onSubmit={handleSignUp} className="space-y-6">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="name" className="block dark:text-gray-600">Name</label>
                         <input type="text" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />

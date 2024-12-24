@@ -16,7 +16,7 @@ const Login = () => {
         console.log(email, password);
         loginUser(email, password)
             .then(result => {
-                console.log(result);
+                console.log(result.user);
                 toast.success('user login Success')
                 setUser(result.user)
                 navigate(location.state ? location.state : '/')
