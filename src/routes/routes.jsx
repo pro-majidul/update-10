@@ -11,6 +11,7 @@ import Language from "../pages/Language";
 import TutorDetails from "../pages/TutorDetails";
 import MyTutorials from "../pages/MyTutorials";
 import BookedTutors from "../pages/BookedTutors";
+import UpdateTutors from "../pages/UpdateTutors";
 
 const routes = createBrowserRouter([
     {
@@ -52,8 +53,14 @@ const routes = createBrowserRouter([
                 element: <Private><MyTutorials></MyTutorials></Private>
             },
             {
+                path: '/update/:id',
+                element: <UpdateTutors></UpdateTutors>,
+                
+
+            },
+            {
                 path: '/booked-tutor',
-                element: <Private><BookedTutors></BookedTutors></Private>
+                element: <Private><BookedTutors></BookedTutors></Private>,
             }
         ]
     },
