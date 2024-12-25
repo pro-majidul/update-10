@@ -58,7 +58,7 @@ const Starts = () => {
                         <FaUsersGear size={40} color='white' />
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">17%</p>
+                        <p className="text-3xl font-semibold leading-none">{totaltuturials.usercount}</p>
                         <p className="capitalize">User's Count</p>
                     </div>
                 </div>

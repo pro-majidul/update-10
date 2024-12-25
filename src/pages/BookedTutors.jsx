@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useUsers from '../hooks/useUsers';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const BookedTutors = () => {
     const { user } = useUsers()
@@ -13,6 +15,22 @@ const BookedTutors = () => {
             })
     }, [user.email])
 
+    console.log(items);
+
+    const handelReview = async (id) => {
+        console.log(id);
+        try {
+
+            const { data } = await axios.patch(`http://localhost:5000/tutors/${id}`)
+            if (data.modifiedCount > 0) {
+                toast.success('Review Success')
+            }
+        } catch {
+
+            toast.error("could'nt done review")
+        }
+
+    }
     return (
         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
             <div className=" overflow-x-auto">
@@ -48,8 +66,8 @@ const BookedTutors = () => {
                                 <td>{item.name}</td>
                                 <td>{item.language}</td>
                                 <td> $ {item.price}</td>
-                                <th >
-                                    <span className="px-3 py-1 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">
+                                <th onClick={() => handelReview(item.tutorId)}>
+                                    <span className="px-3 py-1 cursor-pointer hover:bg-purple-600 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">
                                         <span>Review</span>
                                     </span>
                                 </th>

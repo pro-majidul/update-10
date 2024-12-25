@@ -13,10 +13,10 @@ const MyTutorials = () => {
         try {
             const { data } = await axios.get(`http://localhost:5000/tutor/${user?.email}`)
 
-            setData(data)
-            setLoader(false)
+            setData(data);
+            setLoader(false);
         } catch {
-            setLoader(false)
+            setLoader(false);
         }
     }
 
@@ -30,8 +30,8 @@ const MyTutorials = () => {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     } console.log(data);
     return (
-        <div>
-            <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">
+        <div className='grid grid-cols-1  py-5 my-5 sm:grid-cols-2 md:grid-cols-3 g gap-5'>
+            {/* <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">
                 <div className="container p-6 mx-auto space-y-8">
                     <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
                         {
@@ -53,7 +53,40 @@ const MyTutorials = () => {
 
                     </div>
                 </div>
-            </section>
+            </section> */}
+            {
+                data.map(items => <div key={items._id} className="flex border-2 transition hover:scale-105 flex-col max-w-md p-6 rounded-md dark:bg-gray-200 dark:text-gray-800">
+                    <img
+                        src={items.photo}
+                        alt=""
+                        className="flex-shrink-0 object-cover h-32 rounded-sm sm:h-64 dark:bg-gray-500 aspect-square"
+                    />
+                    <div className="mt-2 space-y-2 flex-grow">
+                        <h2 className="text-xl font-semibold">Name : {items.name}</h2>
+                        <span className="block pb-2 text-xl font-semibold dark:text-gray-600">
+                            Language : {items.language}
+                        </span>
+                        <p>Descriptions : {items.description}</p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <p className="text-md font-semibold">Price : ${items.price}</p>
+                        <p className="text-md font-semibold">Review : {items.review}</p>
+                    </div>
+                    <div className="flex justify-between mt-auto pt-4">
+                        <Link>
+                            <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                Update
+                            </button>
+                        </Link>
+                        <Link>
+                            <button className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
+                                Delete
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+                )
+            }
         </div>
     );
 };

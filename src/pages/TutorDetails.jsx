@@ -24,6 +24,9 @@ const TutorDetails = () => {
 
     const handelBooked = () => {
 
+        if (datas.email === user.email) {
+            return toast.error('Can not Booked Own Tutorials')
+        }
         const bookingDetails = {
             tutorId: datas._id,
             image: datas.photo,

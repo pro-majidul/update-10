@@ -41,8 +41,19 @@ const AuthProvider = ({ children }) => {
                 // console.log(currentUser);
                 setUser(currentUser);
                 setLoader(false)
+                // const data = { email: currentUser.email }
+                // axios.post('https://job-portal-server-for-recruiter-part2.vercel.app/jwt', data, { withCredentials: true })
+                //     .then(() => {
+
+                //        
+                //     })
             }
             else {
+                // axios.post('https://job-portal-server-for-recruiter-part2.vercel.app/logout', {}, { withCredentials: true })
+                //     .then(() => {
+
+                //         setLoading(false)
+                //     })
                 setUser(null)
                 setLoader(false)
             }

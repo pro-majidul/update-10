@@ -18,7 +18,7 @@ const SignUp = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-
+        const info = { name, email, photo }
         createUser(email, password)
             .then(() => {
                 updateUserInfo(name, photo)
@@ -26,15 +26,28 @@ const SignUp = () => {
                         logOutUser()
                             .then(() => {
                                 toast.success('User signed up successfully. Please sign in.');
-                                navigate('/login'); 
+                                navigate('/login');
                             })
                             .catch((error) => {
                                 toast.error('Failed to log out. Please try again.');
                             });
                     })
-                    .catch((error) => {
+                    .catch(() => {
                         toast.error('Failed to update profile. Please try again.');
                     });
+
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(info)
+                }).then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    }).catch(error => {
+                        console.log(error);
+                    })
             })
             .catch((error) => {
                 toast.error(`Sign-up failed: ${error.message}`);

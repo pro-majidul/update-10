@@ -13,10 +13,8 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         loginUser(email, password)
             .then(result => {
-                console.log(result.user);
                 toast.success('user login Success')
                 setUser(result.user)
                 navigate(location.state ? location.state : '/')
@@ -37,7 +35,22 @@ const Login = () => {
             .then(result => {
                 console.log(result.user);
                 setUser(result.user)
+                const email = result.user?.email;
                 toast.success('user login Success')
+                const data = { email: result.user.email, name: result.user.displayName, photo: result.user.photoURL }
+                fetch(`http://localhost:5000/users/${email}`, {
+                    method: "PUT",
+                    headers: {
+                       "content-type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    }).catch(error => {
+                        console.log(error);
+                    })
                 navigate(location.state ? location.state : '/')
             })
             .catch(error => {
