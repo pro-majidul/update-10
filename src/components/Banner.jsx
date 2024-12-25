@@ -7,7 +7,7 @@ const Banner = () => {
             <div className="container flex flex-col-reverse justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
                 <div className="flex flex-col justify-center  text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                     <h1 className="text-3xl font-bold leading-none sm:text-6xl">Learn Languages
-                        <span className="dark:text-violet-600">Achieve Dreams</span> Connect with Expert Tutors Anywhere, Anytime
+                        <span className="dark:text-violet-600"> Achieve Dreams</span> with Expert Tutors 
                     </h1>
                     <p className="mt-6 mb-8 text-lg sm:mb-12">With flexible schedules, diverse subjects, and top-rated tutors, learning has never been this convenient
                         <br className="hidden md:inline lg:hidden" /> Master a new language or subject with personalized lessons from experienced tutors
@@ -18,7 +18,7 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className="flex items-center justify-center  mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-                    <img src="https://i.ibb.co.com/syJxJRd/hand-drawn-business-people-illus.png" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWuB9vwiCEJsIV03O_QIM9UdCaAaTiCTEHYQ&s" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
                 </div>
             </div>
         </section>
