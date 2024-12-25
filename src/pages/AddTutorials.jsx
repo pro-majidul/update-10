@@ -1,10 +1,11 @@
 import React from 'react';
 import useUsers from '../hooks/useUsers';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const AddTutorials = () => {
     const { user } = useUsers()
-    console.log(user.user);
+    const navigate = useNavigate()
     const handelAddTutorials = e => {
         e.preventDefault();
         const form = new FormData(e.target)
@@ -23,6 +24,7 @@ const AddTutorials = () => {
                 console.log(data);
                 if (data.insertedId) {
                     toast.success('Tutorials Added SuccessFull')
+                    navigate('/find-tutors')
                 }
             })
 

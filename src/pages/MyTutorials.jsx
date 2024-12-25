@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useUsers from '../hooks/useUsers';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const MyTutorials = () => {
     const { user } = useUsers()
@@ -25,6 +26,37 @@ const MyTutorials = () => {
         loaderdata()
 
     }, [user.email])
+
+
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:5000/tutors/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const result = await response.json();
+
+            if (result.deletedCount === 1) {
+                console.log("Successfully deleted one document.");
+                toast.success('Successfully deleted one document.');
+
+                const filterdata = data.filter(item => item._id !== id)
+                setData(filterdata)
+            } else {
+                console.log("No documents matched the query. Deleted 0 documents.");
+                toast.error('No documents matched the query. Deleted 0 documents.');
+            }
+        } catch (error) {
+            console.error("Error deleting document:", error);
+            toast.error('An error occurred while trying to delete the document.');
+        }
+    };
+
+
 
     if (loader) {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
@@ -55,11 +87,11 @@ const MyTutorials = () => {
                                 Update
                             </button>
                         </Link>
-                        <Link>
-                            <button className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">
-                                Delete
-                            </button>
-                        </Link>
+
+                        <button onClick={() => handleDelete(items._id)} className="px-4 py-2 bg-gray-200 text-gray-800 hover:text-white rounded hover:bg-gray-700">
+                            Delete
+                        </button>
+
                     </div>
                 </div>
                 )
