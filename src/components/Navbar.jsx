@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GiTeacher } from 'react-icons/gi';
 import { NavLink } from 'react-router-dom';
 import useUsers from '../hooks/useUsers';
@@ -6,6 +6,16 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const { user, setUser, logOutUser } = useUsers();
+    const [theme, setTheme] = useState('light')
+
+    const handeltheme = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark')
+    }
+
+    useEffect(() => {
+        document.querySelector('html').setAttribute('data-theme', theme);
+
+    }, [theme])
 
     const handelLogOut = () => {
         logOutUser()
@@ -40,13 +50,28 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <NavLink to='/' className={({ isActive }) => isActive ? 'btn  btn-md hover:bg-green-300 btn-accent text-black' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Home</NavLink>
-                        <NavLink to='/find-tutors' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Find Tutors</NavLink>
-                        <NavLink to='/add-tutorial' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Add Tutorials</NavLink>
-                        <NavLink to='/my-tutorial' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My Tutorials
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-48 p-2 shadow">
+
+                        <div className='flex items-center justify-center'>
+                            <input onClick={handeltheme} type="checkbox" className="toggle" defaultChecked />
+                        </div>
+                        <NavLink to='/' className={({ isActive }) => isActive ? 'btn  btn-sm hover:bg-green-300 btn-accent text-black' : 'btn  btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Home</NavLink>
+                        <NavLink to='/find-tutors' className={({ isActive }) => isActive ? 'btn  btn-sm btn-accent text-white hover:bg-green-300' : 'btn  btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Find Tutors</NavLink>
+                        <NavLink to='/add-tutorial' className={({ isActive }) => isActive ? 'btn  btn-sm btn-accent text-white hover:bg-green-300' : 'btn  btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}> Add Tutorials</NavLink>
+                        <NavLink to='/my-tutorial' className={({ isActive }) => isActive ? 'btn  btn-sm btn-accent text-white hover:bg-green-300' : 'btn  btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My Tutorials
                         </NavLink>
-                        <NavLink to='/booked-tutor' className={({ isActive }) => isActive ? 'btn  btn-md btn-accent text-white hover:bg-green-300' : 'btn  btn-md btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My booked tutors</NavLink>
+                        <NavLink to='/booked-tutor' className={({ isActive }) => isActive ? 'btn  btn-sm btn-accent text-white hover:bg-green-300' : 'btn  btn-sm btn-neutral text-lg font-medium text-white hover:bg-green-300'}> My booked tutors</NavLink>
+
+                        {
+                            user && user ? <div className="dropdown">
+                                <div tabIndex={0}  >
+                                    <img className='md:w-12 w-8  rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="" />
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 mt-3  p-2 shadow">
+                                    <li className='md:p-2 text-white bg-purple-500 p-2 md:text-xl md:font-medium'>{user.displayName}</li>
+                                </ul>
+                            </div> : ''
+                        }
 
                     </ul>
                 </div>
@@ -65,9 +90,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <div className='hidden md:block mr-4'>
+                    <input onClick={handeltheme} type="checkbox" className="toggle" defaultChecked />
+                </div>
+
                 {
                     user && user ? <div className='flex gap-1 items-center justify-center'>
-                        <div className="dropdown">
+                        <div className="dropdown hidden md:block">
                             <div tabIndex={0}  >
                                 <img className='md:w-12 w-8  rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="" />
                             </div>

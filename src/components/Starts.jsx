@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { FaLanguage } from 'react-icons/fa';
+import { FaLanguage, FaStar } from 'react-icons/fa';
 import { FaUsersGear } from 'react-icons/fa6';
 import { GiTeacher } from 'react-icons/gi';
 import { MdReviews } from 'react-icons/md';
@@ -26,7 +26,7 @@ const Starts = () => {
                         <GiTeacher size={40} color='white' />
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">{totaltuturials?.totaltutorial}</p>
+                        <p className="text-3xl font-semibold leading-none">{totaltuturials?.totaltutorial}+ </p>
                         <p className="capitalize">Tutors Count</p>
                     </div>
                 </div>
@@ -35,10 +35,10 @@ const Starts = () => {
                         <MdReviews size={40} color='white' />
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">
+                        <p className="text-3xl font-semibold flex items-center gap-1 leading-none">
                             {
                                 totaltuturials && totaltuturials?.totalReview[0]?.total
-                            }
+                            }+ <FaStar size={18} /> <FaStar size={18} /> <FaStar size={18} />
                         </p>
 
                         <p className="capitalize">Review Counts</p>
@@ -49,7 +49,7 @@ const Starts = () => {
                         <FaLanguage size={40} color='white' />
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">{totaltuturials.totalLanguage}</p>
+                        <p className="text-3xl font-semibold leading-none">{totaltuturials.totalLanguage}+ </p>
                         <p className="capitalize">Language Count</p>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const Starts = () => {
                         <FaUsersGear size={40} color='white' />
                     </div>
                     <div className="flex flex-col justify-center align-middle">
-                        <p className="text-3xl font-semibold leading-none">{totaltuturials.usercount}</p>
+                        <p className="text-3xl font-semibold leading-none">{totaltuturials.usercount}+ </p>
                         <p className="capitalize">User's Count</p>
                     </div>
                 </div>
