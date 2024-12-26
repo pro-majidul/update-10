@@ -4,6 +4,7 @@ import Starts from '../components/Starts';
 import Languages from '../components/Languages';
 import FAQ from '../components/FAQ';
 import Review from '../components/Review';
+import CarusolReview from '../components/CarusolReview';
 
 const Home = () => {
     return (
@@ -15,7 +16,7 @@ const Home = () => {
                     <Languages></Languages>
                 </div>
                 <div className='my-5'>
-                <Review></Review>
+                <CarusolReview></CarusolReview>
                 </div>
                 <div className='mb-5'>
                     <FAQ></FAQ>
