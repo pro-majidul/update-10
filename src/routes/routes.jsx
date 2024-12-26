@@ -55,8 +55,6 @@ const routes = createBrowserRouter([
             {
                 path: '/update/:id',
                 element: <UpdateTutors></UpdateTutors>,
-                
-
             },
             {
                 path: '/booked-tutor',

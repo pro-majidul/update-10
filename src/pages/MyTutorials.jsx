@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useUsers from '../hooks/useUsers';
 import { Link } from 'react-router-dom';
@@ -10,21 +10,10 @@ const MyTutorials = () => {
     const [loader, setLoader] = useState(true);
     const [data, setData] = useState([])
     const axiosSecure = useSecureAxios()
-    // const loaderdata = async () => {
-    //     try {
-    //         const { data } = await axios.get(`http://localhost:5000/tutor/${user?.email}`, {withCredentials : true})
-    //         console.log(data);
-
-    //         setData(data);
-    //         setLoader(false);
-    //     } catch {
-    //         setLoader(false);
-    //     }
-    // }
+    
 
 
     useEffect(() => {
-        // loaderdata()
         try {
 
             axiosSecure.get(`/tutor/${user?.email}`)
@@ -42,16 +31,19 @@ const MyTutorials = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/tutors/${id}`, {
-                method: "DELETE",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+            const deletedata = await axiosSecure.delete(`/tutors/${id}?email=${user.email}`)
 
-            const result = await response.json();
 
-            if (result.deletedCount === 1) {
+            // const response = await fetch(`http://localhost:5000/tutors/${id}?email=${user.email}`, {
+            //     method: "DELETE",
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            // });
+
+            // const result = await response.json();
+
+            if (deletedata.data.deletedCount === 1) {
                 console.log("Successfully deleted one document.");
                 toast.success('Successfully deleted one document.');
 

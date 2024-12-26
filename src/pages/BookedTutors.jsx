@@ -2,17 +2,33 @@ import React, { useEffect, useState } from 'react';
 import useUsers from '../hooks/useUsers';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import useSecureAxios from '../hooks/useSecureAxios';
 
 const BookedTutors = () => {
     const { user } = useUsers()
     const [items, setItems] = useState([])
+    const AxiosSecure = useSecureAxios()
     useEffect(() => {
-        axios.get(`http://localhost:5000/tutorBooked?email=${user.email}`)
-            // .then(res => res.json())
-            .then(res => {
+        // axios.get(`http://localhost:5000/tutorBooked?email=${user.email}`)
+        //     // .then(res => res.json())
+        //     .then(res => {
+        //         console.log(res.data);
+        //         setItems(res.data)
+        //     })
+
+        const fetchData = async () => {
+            try {
+                const res = await AxiosSecure.get(`/tutorBooked?email=${user.email}`);
                 console.log(res.data);
-                setItems(res.data)
-            })
+                setItems(res.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        if (user.email) {
+            fetchData();
+        }
     }, [user.email])
 
     console.log(items);
@@ -21,8 +37,8 @@ const BookedTutors = () => {
         console.log(id);
         try {
 
-            const { data } = await axios.patch(`http://localhost:5000/tutors/${id}`)
-            if (data.modifiedCount > 0) {
+            const data = await AxiosSecure.patch(`/tutors/${id}?email=${user.email}`)
+            if (data.data.modifiedCount > 0) {
                 toast.success('Review Success')
             }
         } catch {
@@ -49,7 +65,7 @@ const BookedTutors = () => {
                     <tbody>
 
                         {
-                            items.map(item => <tr key={item._id}>
+                          items &&  items.map(item => <tr key={item._id}>
 
                                 <td>
                                     <div className="flex items-center gap-3">

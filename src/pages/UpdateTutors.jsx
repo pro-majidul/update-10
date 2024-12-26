@@ -1,26 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useSecureAxios from '../hooks/useSecureAxios';
+import useUsers from '../hooks/useUsers';
+// import axios from 'axios';
 
 const UpdateTutors = () => {
     const { id } = useParams()
     const [data, setData] = useState({})
     const [loader, setLoader] = useState(true)
     const navigate = useNavigate()
+    const secureAxios = useSecureAxios()
+    const { user } = useUsers()
     const { name, email, language, price, description, photo, review } = data || {}
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tutors/${id}`)
-            .then(res => res.json())
-            .then(result => {
-                setData(result)
-                setLoader(false)
-            })
-            .catch(error => {
-                console.log(error);
-                setLoader(false)
-            })
-    }, [])
+
+        // axios.get(`http://localhost:5000/tutors/${id}?email=${user.email}`)
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         setData(result)
+        //         setLoader(false)
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //         setLoader(false)
+        //     })
+
+
+        const fetchData = async () => {
+            try {
+                const response = await secureAxios.get(`/tutors/${id}?email=${user.email}`);
+                console.log('Data is:', response.data);
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoader(false);
+            }
+        };
+
+        if (id && user.email) {
+            fetchData();
+        }
+    }, [id, user.email]);
+
+
+
+
 
     const handelUpdate = e => {
         e.preventDefault()
@@ -47,6 +74,23 @@ const UpdateTutors = () => {
             .catch(error => {
                 console.log(error);
             })
+
+
+
+
+
+        // try {
+        //     const updateinfo = secureAxios.put(`/tutors/${id}?email=${user.email}`)
+        //     console.log(updateinfo);
+        //     if (updateinfo.data.modifiedCount > 0) {
+        //         toast.success('Tutorial Update Successfull')
+        //         navigate('/my-tutorial')
+        //     } else {
+        //         toast.error('Please Update an item first')
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        // }
 
 
     }
