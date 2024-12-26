@@ -20,7 +20,7 @@ const Login = () => {
                 navigate(location.state ? location.state : '/')
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
                 toast.error(`${error.code}`)
 
             })
@@ -33,7 +33,7 @@ const Login = () => {
 
         googleLogin()
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 setUser(result.user)
                 const email = result.user?.email;
                 toast.success('user login Success')
@@ -47,15 +47,15 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                     }).catch(error => {
-                        console.log(error);
+                        // console.log(error);
                     })
 
                 navigate(location.state ? location.state : '/')
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
                 toast.error(`${error.code}`)
             })
         // console.log("handelgooglelogin added");

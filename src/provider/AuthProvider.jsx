@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
                 const data = { email: currentUser.email }
                 axios.post('http://localhost:5000/jwt', data, { withCredentials: true })
                     .then((res) => {
-                        console.log('create web json token', res.data);
+                        // console.log('create web json token', res.data);
                         setUser(currentUser);
 
                         setLoader(false)
@@ -52,12 +52,12 @@ const AuthProvider = ({ children }) => {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log('user logout and delete token', res.data);
+                        // console.log('user logout and delete token', res.data);
                         setUser('')
                         setLoader(false)
                     })
             }
-            console.log(currentUser);
+            // console.log(currentUser);
         })
 
 

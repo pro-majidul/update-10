@@ -15,7 +15,7 @@ const AddTutorials = () => {
         const formdata = Object.fromEntries(form.entries());
         const { ...newdata } = formdata;
         newdata.review = 0;
-        console.log("new data added ", newdata);
+        // console.log("new data added ", newdata);
         axiosSecure.post('/tutors', newdata)
             // .then(res => res.json())
             .then(res => {

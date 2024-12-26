@@ -23,13 +23,11 @@ const useSecureAxios = () => {
             ,
             error => {
                 if (error.status === 401 || error.status === 403) {
-                    console.log('unauthorize !  set logout and Go to login page');
                     logOutUser()
                         .then(() => {
-                            console.log('user log out please login again');
                             navigate('/login')
                         }).catch(error => {
-                            console.log(error);
+                            // console.log(error);
                         })
 
                 }

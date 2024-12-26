@@ -19,7 +19,7 @@ const BookedTutors = () => {
         const fetchData = async () => {
             try {
                 const res = await AxiosSecure.get(`/tutorBooked?email=${user.email}`);
-                console.log(res.data);
+                // console.log(res.data);
                 setItems(res.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -31,10 +31,10 @@ const BookedTutors = () => {
         }
     }, [user.email])
 
-    console.log(items);
+    // console.log(items);
 
     const handelReview = async (id) => {
-        console.log(id);
+        // console.log(id);
         try {
 
             const data = await AxiosSecure.patch(`/tutors/${id}?email=${user.email}`)

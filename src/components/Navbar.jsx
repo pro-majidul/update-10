@@ -21,11 +21,11 @@ const Navbar = () => {
         logOutUser()
             .then(result => {
                 setUser(result);
-                console.log(result);
+               
                 toast.success('user logOut SuccessFull')
             })
             .catch(error => {
-                console.log(error);
+                
                 toast.error(`${error.code}`)
             })
     }

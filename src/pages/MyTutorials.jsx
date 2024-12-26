@@ -44,13 +44,13 @@ const MyTutorials = () => {
             // const result = await response.json();
 
             if (deletedata.data.deletedCount === 1) {
-                console.log("Successfully deleted one document.");
+                // console.log("Successfully deleted one document.");
                 toast.success('Successfully deleted one document.');
 
                 const filterdata = data.filter(item => item._id !== id)
                 setData(filterdata)
             } else {
-                console.log("No documents matched the query. Deleted 0 documents.");
+                // console.log("No documents matched the query. Deleted 0 documents.");
                 toast.error('No documents matched the query. Deleted 0 documents.');
             }
         } catch (error) {
@@ -63,7 +63,8 @@ const MyTutorials = () => {
 
     if (loader) {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
-    } console.log(data);
+    }
+    //  console.log(data);
     return (
         <div className='grid grid-cols-1  py-5 my-5 sm:grid-cols-2 md:grid-cols-3 g gap-5'>
             {

@@ -17,7 +17,7 @@ const Starts = () => {
     }, [])
 
 
-    console.log(totaltuturials)
+
     return (
         <section className="p-6 my-6 dark:bg-gray-100 dark:text-gray-800">
             <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">

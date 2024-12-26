@@ -44,9 +44,9 @@ const SignUp = () => {
                     body: JSON.stringify(info)
                 }).then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                     }).catch(error => {
-                        console.log(error);
+                        // console.log(error);
                     })
             })
             .catch((error) => {

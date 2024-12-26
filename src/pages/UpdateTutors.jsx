@@ -18,7 +18,7 @@ const UpdateTutors = () => {
         const fetchData = async () => {
             try {
                 const response = await secureAxios.get(`/tutors/${id}?email=${user.email}`);
-                console.log('Data is:', response.data);
+                // console.log('Data is:', response.data);
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
