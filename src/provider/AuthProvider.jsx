@@ -52,10 +52,10 @@ const AuthProvider = ({ children }) => {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log('user logout and delete token',res.data);
+                        console.log('user logout and delete token', res.data);
+                        setUser('')
+                        setLoader(false)
                     })
-                setUser('')
-                setLoader(false)
             }
             console.log(currentUser);
         })

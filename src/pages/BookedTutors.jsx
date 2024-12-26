@@ -7,11 +7,11 @@ const BookedTutors = () => {
     const { user } = useUsers()
     const [items, setItems] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/tutorBooked?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setItems(data)
+        axios.get(`http://localhost:5000/tutorBooked?email=${user.email}`)
+            // .then(res => res.json())
+            .then(res => {
+                console.log(res.data);
+                setItems(res.data)
             })
     }, [user.email])
 

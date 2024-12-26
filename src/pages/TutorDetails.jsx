@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useUsers from "../hooks/useUsers";
 import { useLoaderData, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useSecureAxios from "../hooks/useSecureAxios";
 
 const TutorDetails = () => {
     const { user } = useUsers()
@@ -9,20 +10,22 @@ const TutorDetails = () => {
     const { details } = useParams()
     const [datas, setDatas] = useState(loaderdata)
     const [loader, setLoader] = useState(true)
+    const axiosdata = useSecureAxios()
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tutors/${details}`)
-            .then(res => res.json())
-            .then(data => {
-                setDatas(data)
-                setLoader(false)
-            }).catch(error => {
-                setLoader(false)
-            })
+        try {
+            axiosdata.get(`/tutors/${details}?email=${user.email}`)
+                .then(res => {
+                    setDatas(res.data)
+                    setLoader(false)
+                })
+        } catch {
+            setLoader(false)
+        }
     }, [user.email])
 
-    const handelBooked = () => {
+    const handelBooked = async () => {
 
         if (datas.email === user.email) {
             return toast.error('Can not Booked Own Tutorials')
@@ -37,22 +40,18 @@ const TutorDetails = () => {
             name: datas.name,
         };
 
-        fetch('http://localhost:5000/tutorBooked', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(bookingDetails)
-        }).then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    toast.success('Tutors Booked SuccessFull')
-                }
-            }).catch(error => {
-                toast.error('You already Booked This Data')
-                console.log(error);
-            })
 
+        try {
+            const response = await axiosdata.post('/tutorBooked', bookingDetails)
+            if (response.data.insertedId) {
+                return toast.success('Tutors Booked SuccessFull')
+            }
+            console.log(response);
+
+        } catch (error) {
+            toast.error(`${error?.response?.data}`)
+            console.log(error);
+        }
 
     }
 

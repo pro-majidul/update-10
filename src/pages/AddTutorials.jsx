@@ -2,6 +2,7 @@ import React from 'react';
 import useUsers from '../hooks/useUsers';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AddTutorials = () => {
     const { user } = useUsers()
@@ -13,16 +14,11 @@ const AddTutorials = () => {
         const { ...newdata } = formdata;
         newdata.review = 0;
         console.log("new data added ", newdata);
-        fetch('http://localhost:5000/tutors', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newdata)
-        }).then(res => res.json())
-            .then(data => {
+        axios.post('http://localhost:5000/tutors', { newdata }, { withCredentials: true })
+            // .then(res => res.json())
+            .then(res => {
                 console.log(data);
-                if (data.insertedId) {
+                if (res.data.insertedId) {
                     toast.success('Tutorials Added SuccessFull')
                     navigate('/find-tutors')
                 }
