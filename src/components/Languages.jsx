@@ -8,7 +8,7 @@ const Languages = () => {
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:5000/language')
+        fetch('https://online-tutorial-booking-platform-server-side.vercel.app/language')
             .then(res => res.json())
             .then(data => {
                 setLanguages(data)

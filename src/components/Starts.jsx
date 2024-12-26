@@ -9,7 +9,7 @@ const Starts = () => {
     const [totaltuturials, setTotalTutorials] = useState(0)
 
     useEffect(() => {
-        fetch('http://localhost:5000/tutorsCount')
+        fetch('https://online-tutorial-booking-platform-server-side.vercel.app/tutorsCount')
             .then(res => res.json())
             .then(data => {
                 setTotalTutorials(data);

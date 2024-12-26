@@ -36,7 +36,7 @@ const SignUp = () => {
                         toast.error('Failed to update profile. Please try again.');
                     });
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://online-tutorial-booking-platform-server-side.vercel.app/users', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

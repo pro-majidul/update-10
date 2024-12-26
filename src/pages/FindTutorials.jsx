@@ -6,7 +6,7 @@ const FindTutorials = () => {
     const [loader, setLoader] = useState(true);
     const [search , setSearch]=useState('')
     useEffect(() => {
-        fetch(`http://localhost:5000/allTutors?search=${search}`)
+        fetch(`https://online-tutorial-booking-platform-server-side.vercel.app/allTutors?search=${search}`)
             .then(res => res.json())
             .then(data => {
                 setData(data)

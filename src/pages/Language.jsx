@@ -7,7 +7,7 @@ const Language = () => {
     const [loader, setLoader] = useState(true)
     const [search, setSearch] = useState('')
     useEffect(() => {
-        fetch(`http://localhost:5000/tutors?languages=${category}&search=${search}`)
+        fetch(`https://online-tutorial-booking-platform-server-side.vercel.app/tutors?languages=${category}&search=${search}`)
             .then(res => res.json())
             .then(data => {
                 setItems(data)

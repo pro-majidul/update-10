@@ -38,7 +38,7 @@ const Login = () => {
                 const email = result.user?.email;
                 toast.success('user login Success')
                 const data = { email: result.user.email, name: result.user.displayName, photo: result.user.photoURL }
-                fetch(`http://localhost:5000/users/${email}`, {
+                fetch(`https://online-tutorial-booking-platform-server-side.vercel.app/users/${email}`, {
                     method: "PUT",
                     headers: {
                         "content-type": "application/json"

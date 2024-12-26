@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
         const onSubscribe = onAuthStateChanged(auth, currentUser => {
             if (currentUser?.email) {
                 const data = { email: currentUser.email }
-                axios.post('http://localhost:5000/jwt', data, { withCredentials: true })
+                axios.post('https://online-tutorial-booking-platform-server-side.vercel.app/jwt', data, { withCredentials: true })
                     .then((res) => {
                         // console.log('create web json token', res.data);
                         setUser(currentUser);
@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
                         setLoader(false)
                     })
             } else {
-                axios.post('http://localhost:5000/logout', {}, {
+                axios.post('https://online-tutorial-booking-platform-server-side.vercel.app/logout', {}, {
                     withCredentials: true
                 })
                     .then(res => {

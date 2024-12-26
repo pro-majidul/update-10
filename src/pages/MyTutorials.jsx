@@ -34,7 +34,7 @@ const MyTutorials = () => {
             const deletedata = await axiosSecure.delete(`/tutors/${id}?email=${user.email}`)
 
 
-            // const response = await fetch(`http://localhost:5000/tutors/${id}?email=${user.email}`, {
+            // const response = await fetch(`https://online-tutorial-booking-platform-server-side.vercel.app/tutors/${id}?email=${user.email}`, {
             //     method: "DELETE",
             //     headers: {
             //         'Content-Type': 'application/json',
