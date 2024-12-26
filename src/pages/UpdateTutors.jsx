@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useSecureAxios from '../hooks/useSecureAxios';
 import useUsers from '../hooks/useUsers';
@@ -15,19 +15,6 @@ const UpdateTutors = () => {
     const { name, email, language, price, description, photo, review } = data || {}
 
     useEffect(() => {
-
-        // axios.get(`http://localhost:5000/tutors/${id}?email=${user.email}`)
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         setData(result)
-        //         setLoader(false)
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         setLoader(false)
-        //     })
-
-
         const fetchData = async () => {
             try {
                 const response = await secureAxios.get(`/tutors/${id}?email=${user.email}`);
@@ -40,60 +27,47 @@ const UpdateTutors = () => {
             }
         };
 
-        if (id && user.email) {
+        if (id && user?.email) {
             fetchData();
         }
-    }, [id, user.email]);
+    }, [id, user?.email]); 
 
 
 
 
 
-    const handelUpdate = e => {
-        e.preventDefault()
-        const form = new FormData(e.target)
-        const formdata = Object.fromEntries(form.entries());
 
-        console.log(formdata);
-        fetch(`http://localhost:5000/tutors/${id}`, {
-            method: "PUT",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(formdata)
-        }).then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
-                    toast.success('Tutorial Update Successfull')
-                    navigate('/my-tutorial')
-                } else {
-                    toast.error('Please Update an item first')
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
+    const handelUpdate = async (e) => {
+        e.preventDefault();
 
+        const form = e.target;
+        const formdata = {
+            name: form.name.value,
+            email: form.email.value,
+            language: form.language.value,
+            price: form.price.value,
+            photo: form.photo.value,
+            description: form.description.value,
+        };
 
+        try {
+           
+            const response = await secureAxios.put(
+                `/tutors/${id}?email=${user.email}`, formdata
+            );
 
+            if (response.data.modifiedCount > 0) {
+                toast.success('Tutorial Update Successful');
+                navigate('/my-tutorial');
+            } else {
+                toast.error('Please update an item first');
+            }
+        } catch (error) {
+            console.error('Error updating tutor:', error);
+            toast.error(error.response?.data?.message || 'Update failed');
+        }
+    };
 
-
-        // try {
-        //     const updateinfo = secureAxios.put(`/tutors/${id}?email=${user.email}`)
-        //     console.log(updateinfo);
-        //     if (updateinfo.data.modifiedCount > 0) {
-        //         toast.success('Tutorial Update Successfull')
-        //         navigate('/my-tutorial')
-        //     } else {
-        //         toast.error('Please Update an item first')
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        // }
-
-
-    }
 
 
     if (loader) {
