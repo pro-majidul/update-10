@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Language = () => {
     const { category } = useParams()
     const [items, setItems] = useState([])
     const [loader, setLoader] = useState(true)
+    const [search, setSearch] = useState('')
     useEffect(() => {
-        fetch(`http://localhost:5000/tutors?language=${category}`)
+        fetch(`http://localhost:5000/tutors?languages=${category}&search=${search}`)
             .then(res => res.json())
             .then(data => {
                 setItems(data)
@@ -14,7 +15,7 @@ const Language = () => {
             }).catch(error => {
                 setLoader(false)
             })
-    }, [])
+    }, [search,])
 
     if (loader) {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
@@ -31,7 +32,7 @@ const Language = () => {
                             </svg>
                         </button>
                     </span>
-                    <input type="search" name="Search" placeholder="Search..." className="w-full py-3 pl-12 text-sm rounded-full sm:w-96 focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50" />
+                    <input onChange={(e) => setSearch(e.target.value)} type="search" name="Search" placeholder="Search..." className="w-full py-3 pl-12 text-sm rounded-full sm:w-96 focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50" />
                 </div>
             </div>
             <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">

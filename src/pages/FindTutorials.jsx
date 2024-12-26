@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 const FindTutorials = () => {
     const [data, setData] = useState([])
     const [loader, setLoader] = useState(true);
+    const [search , setSearch]=useState('')
     useEffect(() => {
-        fetch('http://localhost:5000/tutors')
+        fetch(`http://localhost:5000/allTutors?search=${search}`)
             .then(res => res.json())
             .then(data => {
                 setData(data)
@@ -13,7 +14,7 @@ const FindTutorials = () => {
             }).catch(error => {
                 setLoader(false)
             })
-    }, [])
+    }, [search])
 
     if (loader) {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
@@ -30,7 +31,7 @@ const FindTutorials = () => {
                             </svg>
                         </button>
                     </span>
-                    <input type="search" name="Search" placeholder="Search..." className="w-full py-3 pl-12 text-sm rounded-full sm:w-96 focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50" />
+                    <input onChange={(e)=>setSearch(e.target.value)} type="search" name="Search" placeholder="Search..." className="w-full py-3 pl-12 text-sm rounded-full sm:w-96 focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50" />
                 </div>
             </div>
             <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">
