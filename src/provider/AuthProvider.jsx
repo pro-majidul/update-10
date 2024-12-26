@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.config';
+import axios from 'axios';
 
 export const authContext = createContext()
 
@@ -37,26 +38,26 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const onSubscribe = onAuthStateChanged(auth, currentUser => {
-            if (currentUser) {
-                // console.log(currentUser);
-                setUser(currentUser);
-                setLoader(false)
-                // const data = { email: currentUser.email }
-                // axios.post('https://job-portal-server-for-recruiter-part2.vercel.app/jwt', data, { withCredentials: true })
-                //     .then(() => {
+            if (currentUser?.email) {
+                const data = { email: currentUser.email }
+                axios.post('http://localhost:5000/jwt', data, { withCredentials: true })
+                    .then((res) => {
+                        console.log('create web json token', res.data);
+                        setUser(currentUser);
 
-                //        
-                //     })
-            }
-            else {
-                // axios.post('https://job-portal-server-for-recruiter-part2.vercel.app/logout', {}, { withCredentials: true })
-                //     .then(() => {
-
-                //         setLoading(false)
-                //     })
-                setUser(null)
+                        setLoader(false)
+                    })
+            } else {
+                axios.post('http://localhost:5000/logout', {}, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log('user logout and delete token',res.data);
+                    })
+                setUser('')
                 setLoader(false)
             }
+            console.log(currentUser);
         })
 
 

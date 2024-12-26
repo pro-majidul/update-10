@@ -41,7 +41,7 @@ const Login = () => {
                 fetch(`http://localhost:5000/users/${email}`, {
                     method: "PUT",
                     headers: {
-                       "content-type": "application/json"
+                        "content-type": "application/json"
                     },
                     body: JSON.stringify(data)
                 })
@@ -51,6 +51,7 @@ const Login = () => {
                     }).catch(error => {
                         console.log(error);
                     })
+
                 navigate(location.state ? location.state : '/')
             })
             .catch(error => {
