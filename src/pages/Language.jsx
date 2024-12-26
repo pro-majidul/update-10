@@ -35,7 +35,7 @@ const Language = () => {
                     <input onChange={(e) => setSearch(e.target.value)} type="search" name="Search" placeholder="Search..." className="w-full py-3 pl-12 text-sm rounded-full sm:w-96 focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50" />
                 </div>
             </div>
-            <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">
+            <section className="py-6 sm:py-12  ">
                 <div className="container p-6 mx-auto space-y-8">
                     <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
                         {

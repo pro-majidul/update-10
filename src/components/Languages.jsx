@@ -22,7 +22,7 @@ const Languages = () => {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     }
     return (
-        <section className="p-4 my-6 md:p-8 dark:bg-gray-100 dark:text-gray-800">
+        <section className="p-4 my-6 md:p-8">
             <div className="container grid grid-cols-1 gap-6 m-4 mx-auto md:m-0 md:grid-cols-2 xl:grid-cols-3">
                 {
                     languages.map(language => <Link key={language._id} to={`/find-tutors/${language.language}`}>

@@ -64,7 +64,7 @@ const Login = () => {
 
     return (
         <div className='md:flex items-center justify-center gap-5 my-5 py-5'>
-            <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-200 dark:text-gray-800">
+            <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 ">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
 
                 <div className="my-6 space-y-4">

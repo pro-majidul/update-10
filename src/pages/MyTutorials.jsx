@@ -68,7 +68,7 @@ const MyTutorials = () => {
     return (
         <div className='grid grid-cols-1  py-5 my-5 sm:grid-cols-2 md:grid-cols-3 g gap-5'>
             {
-                data.map(items => <div key={items._id} className="flex border-2 transition hover:scale-105 flex-col max-w-md p-6 rounded-md dark:bg-gray-200 dark:text-gray-800">
+                data.map(items => <div key={items._id} className="flex border-2 transition hover:scale-105 flex-col max-w-md p-6 rounded-md ">
                     <img
                         src={items.photo}
                         alt=""

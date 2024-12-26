@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
-        <section className="dark:bg-gray-100 dark:text-gray-800">
+        <section >
             <div className="container flex flex-col-reverse justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
                 <div className="flex flex-col justify-center  text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                     <h1 className="text-3xl font-bold leading-none sm:text-6xl">Learn Languages

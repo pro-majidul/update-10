@@ -75,7 +75,7 @@ const UpdateTutors = () => {
     }
 
     return (
-        <div className="py-6 dark:bg-gray-100 dark:text-gray-900">
+        <div className="py-6 ">
             <div>
                 <form onSubmit={handelUpdate} className="card-body">
                     <div className="grid md:grid-cols-2 gap-10">

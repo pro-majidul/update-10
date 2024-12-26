@@ -60,7 +60,7 @@ const TutorDetails = () => {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
     }
     return (
-        <section className="dark:bg-gray-100 dark:text-gray-800">
+        <section >
             <div className="container max-w-6xl p-6 mx-auto ">
                 <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50">
                     <img src={datas.photo} alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
