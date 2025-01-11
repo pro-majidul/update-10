@@ -7,7 +7,7 @@ Language Exchange is an online tutor booking platform designed to connect users 
 ---
 
 ## **Live URL**
-🔗 [Language Exchange Live Site]()  
+🔗 [Language Exchange Live Site](https://online-tutor-booking-pla-c7f2c.web.app/)  
 
 
 ---
@@ -65,8 +65,43 @@ Language Exchange is an online tutor booking platform designed to connect users 
 
 
 ---
+## dependencies
 
-Feel free to copy and modify this template to suit your project's specific details! Let me know if you'd like further assistance.
+- **@headlessui/react**: ^2.2.0
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **@stripe/react-stripe-js**: ^3.1.1
+
+- **@tanstack/react-query**: ^5.62.11
+
+- **axios**: ^1.7.9
+
+- **daisyui**: ^4.12.23
+
+- **firebase**: ^11.1.0
+
+- **prop-types**: ^15.8.1
+
+- **react**: ^18.3.1
+
+- **react-date-range**: ^2.0.1
+
+- **react-dom**: ^18.3.1
+
+- **react-helmet-async**: ^2.0.5
+
+- **react-hot-toast**: ^2.4.1
+
+- **react-icons:** ^5.4.0
+
+- **react-router-dom**: ^6.23.0
+
+- **react-spinners**: ^0.15.0
+
+- **recharts**: ^2.15.0
+
+
+# Install the dependencies
+`npm install`
+
+# Run the development server
+`npm run dev`
