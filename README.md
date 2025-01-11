@@ -7,7 +7,7 @@ Language Exchange is an online tutor booking platform designed to connect users 
 ---
 
 ## **Live URL**
-🔗 [Language Exchange Live Site](https://online-tutor-booking-pla-c7f2c.web.app/)  
+🔗 [Language Exchange Live Site](https://online-tutor-booking-platform-client-side.surge.sh/)  
 
 
 ---
