@@ -17,7 +17,7 @@ const TutorDetails = () => {
 
     useEffect(() => {
         try {
-            axios.get(`http://localhost:5000/tutors/${details}`)
+            axios.get(`https://online-tutorial-booking-platform-server-side.vercel.app/tutors/${details}`)
                 .then(res => {
                     console.log(res);
                     setDatas(res.data)
@@ -29,10 +29,10 @@ const TutorDetails = () => {
     }, [])
 
     const handelBooked = async () => {
-        if(!user){
+        if (!user) {
             toast.error('Please Login first')
             navigate('/login')
-            return 
+            return
         }
 
         if (datas.email === user.email) {
@@ -66,15 +66,15 @@ const TutorDetails = () => {
 
     if (loader) {
         return <div className='flex items-center justify-center min-h-screen'>
-        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
-    </div>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        </div>
     }
     return (
         <section >
             <div className="container max-w-6xl p-6 pt-32 mx-auto ">
                 <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50">
                     <div className=" w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
-                        <img src={datas.photo} alt=""  className="h-full w-full" />
+                        <img src={datas.photo} alt="" className="h-full w-full" />
                     </div>
                     <div className="p-6 space-y-4 lg:col-span-5 text-black">
                         <h3 className="text-xl font-semibold sm:text-2xl">Name : {datas.name}</h3>
