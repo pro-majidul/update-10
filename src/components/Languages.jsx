@@ -19,7 +19,9 @@ const Languages = () => {
     }, [])
 
     if (loader) {
-        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return <div className='flex items-center justify-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        </div>
     }
     return (
         <section className="p-4 my-6 md:p-8">
@@ -38,7 +40,7 @@ const Languages = () => {
                         </div>
                     </Link>)
                 }
-               
+
             </div>
         </section>
     );

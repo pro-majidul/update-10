@@ -3,20 +3,21 @@ import Banner from '../components/Banner';
 import Starts from '../components/Starts';
 import Languages from '../components/Languages';
 import FAQ from '../components/FAQ';
-import Review from '../components/Review';
 import CarusolReview from '../components/CarusolReview';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div >
-            <Banner></Banner>
-            <main className='md:space-y-10 md:mb-5'>
+        <div className=''>
+            <div className='bg-[#ff7aac] w-full'>
+
+                <Banner></Banner>
+            </div>
+            <main className='md:space-y-10 md:mb-5 min-h-[calc(100vh-300px)] w-11/12 max-w-7xl mx-auto '>
                 <Starts></Starts>
                 <div className='shadow-lg'>
                     <div >
                         <h3 className='my-5 py-5 text-center text-xl md:text-3xl font-medium text-orange-400 md:font-bold underline underline-offset-8'>Languages</h3>
-                        <Link to='/find-tutors' className='hover:underline hover:text-orange-300'>Show ALL</Link>
+
                     </div>
                     <Languages></Languages>
                 </div>

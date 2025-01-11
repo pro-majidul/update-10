@@ -5,11 +5,11 @@ import Navbar from '../components/Navbar';
 
 const MainLayouts = () => {
     return (
-        <div className='w-11/12 max-w-7xl mx-auto '>
+        <div className=''>
             <nav>
                 <Navbar></Navbar>
             </nav>
-            <main className='min-h-[calc(100vh-300px)]'>
+            <main>
                 <Outlet></Outlet>
             </main>
             <footer>

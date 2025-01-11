@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const FindTutorials = () => {
     const [data, setData] = useState([])
     const [loader, setLoader] = useState(true);
-    const [search , setSearch]=useState('')
+    const [search, setSearch] = useState('')
     useEffect(() => {
         fetch(`https://online-tutorial-booking-platform-server-side.vercel.app/allTutors?search=${search}`)
             .then(res => res.json())
@@ -17,10 +17,12 @@ const FindTutorials = () => {
     }, [search])
 
     if (loader) {
-        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return <div className='flex items-center justify-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        </div>
     }
     return (
-        <div>
+        <div className='pt-28'>
 
             <div className='flex items-center justify-center'>
                 <div className="relative mt-6 mb-12">
@@ -31,24 +33,27 @@ const FindTutorials = () => {
                             </svg>
                         </button>
                     </span>
-                    <input onChange={(e)=>setSearch(e.target.value)} type="search" name="Search" placeholder="Search..." className="w-full py-3 pl-12 text-sm rounded-full sm:w-96 focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50" />
+                    <input onChange={(e) => setSearch(e.target.value)} type="search" name="Search" placeholder="Search..." className="w-full py-3 pl-12 text-sm rounded-full sm:w-96 focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50" />
                 </div>
             </div>
-            <section className="py-6 sm:py-12  ">
+            <section className="py-6">
                 <div className="container p-6 mx-auto space-y-8">
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
                         {
                             data.map(items => <article key={items._id} className="flex transition hover:scale-105 border flex-col dark:bg-gray-50">
 
-                                <img alt="" className="object-cover w-full h-52 dark:bg-gray-500" src={items.photo} />
+                                <div className=" w-full h-64 rounded  lg:col-span-7 dark:bg-gray-500">
+                                    <img src={items.photo} alt="" className="h-full w-full" />
+                                </div>
 
-                                <div className="flex flex-col flex-1 p-6">
+                                <div className="flex flex-col flex-1 p-6 text-black">
 
                                     <p className="text-lg tracking-wider uppercase hover:underline dark:text-violet-600">Name:{items.name}</p>
                                     <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">Language :  {items.language}</h3>
+                                    <p>{items?.description.slice(0, 100)}....</p>
                                     <div className="flex flex-wrap justify-between items-center pt-3 space-x-2  dark:text-gray-600">
                                         <p className='font-bold'>Review {items.review}</p>
-                                        <Link to={`/tutor/${items._id}`}><button className="btn btn-neutral">Details</button></Link>
+                                        <Link to={`/tutor/${items._id}`}><button className="btn btn-sm bg-purple-300">See More</button></Link>
                                     </div>
                                 </div>
                             </article>)

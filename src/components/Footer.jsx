@@ -5,13 +5,13 @@ import { GrInstagram } from 'react-icons/gr';
 
 const Footer = () => {
     return (
-        <footer className="px-4 divide-y ">
+        <footer className="px-4 divide-y bg-purple-100 ">
             <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
                 <div className="lg:w-1/3">
                     <p className="flex justify-center space-x-3 lg:justify-start">
-                        <span className="self-center text-2xl flex gap-1 md:text-3xl font-semibold"> <GiTeacher size={32} />Online Tutors</span>
+                        <span className="self-center text-2xl text-black flex gap-1 md:text-3xl font-semibold"> <GiTeacher size={32} />Online Tutors</span>
                     </p>
-                    <p className="mt-4">
+                    <p className="mt-4 text-black">
                         Language Connect Co.<br />
                         1234 Elm Street, Suite 567<br />
                         Los Angeles, CA 90001<br />
@@ -23,7 +23,7 @@ const Footer = () => {
                 <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                     <div className="space-y-3">
                         <h3 className="tracking-wide uppercase dark:text-gray-900">Product</h3>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1 text-black">
                             <li>
                                 <p className='hover:text-purple-500 hover:underline' >Features</p>
                             </li>
@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
                     <div className="space-y-3">
                         <h3 className="tracking-wide uppercase dark:text-gray-900">Company</h3>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1 text-black">
                             <li>
                                 <p className='hover:text-purple-500 hover:underline' >Privacy</p>
                             </li>
@@ -51,7 +51,7 @@ const Footer = () => {
                     </div>
                     <div className="space-y-3">
                         <h3 className="uppercase dark:text-gray-900">Developers</h3>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1 text-black">
                             <li>
                                 <p className='hover:text-purple-500 hover:underline' >Public API</p>
                             </li>

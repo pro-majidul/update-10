@@ -63,7 +63,7 @@ const Login = () => {
     }
 
     return (
-        <div className='md:flex items-center justify-center gap-5 my-5 py-5'>
+        <div className='md:flex items-center justify-center gap-5 pt-28 py-5'>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 ">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
 

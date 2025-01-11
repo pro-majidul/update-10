@@ -12,6 +12,8 @@ import TutorDetails from "../pages/TutorDetails";
 import MyTutorials from "../pages/MyTutorials";
 import BookedTutors from "../pages/BookedTutors";
 import UpdateTutors from "../pages/UpdateTutors";
+import ContactUs from "../pages/ContactUs";
+import Support from "../pages/Support";
 
 const routes = createBrowserRouter([
     {
@@ -46,7 +48,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/tutor/:details',
-                element: <Private><TutorDetails></TutorDetails></Private>
+                element: <TutorDetails></TutorDetails>
             },
             {
                 path: '/my-tutorial',
@@ -59,6 +61,14 @@ const routes = createBrowserRouter([
             {
                 path: '/booked-tutor',
                 element: <Private><BookedTutors></BookedTutors></Private>,
+            },
+            {
+                path : '/contact',
+                element : <ContactUs></ContactUs>
+            },
+            {
+                path : '/support',
+                element : <Support></Support>
             }
         ]
     },

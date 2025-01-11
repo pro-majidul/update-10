@@ -20,7 +20,7 @@ import Review from './Review'
 
 const CarusolReview = () => {
     return (
-        <div className='container px-6 py-10 mx-auto'>
+        <div className='container md:px-6 py-10 mx-auto'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

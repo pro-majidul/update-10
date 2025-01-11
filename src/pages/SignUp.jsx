@@ -55,7 +55,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className='md:flex items-center gap-2 justify-center py-5 my-5'>
+        <div className='md:flex items-center gap-2 justify-center py-5 pt-28'>
             <div>
                 <Lottie animationData={signUpImg}></Lottie>
             </div>

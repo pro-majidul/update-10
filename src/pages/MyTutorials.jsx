@@ -62,11 +62,13 @@ const MyTutorials = () => {
 
 
     if (loader) {
-        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return <div className='flex items-center justify-center min-h-screen'>
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    </div>
     }
     //  console.log(data);
     return (
-        <div className='grid grid-cols-1  py-5 my-5 sm:grid-cols-2 md:grid-cols-3 g gap-5'>
+        <div className='grid grid-cols-1  py-5 pt-28 sm:grid-cols-2 md:grid-cols-3 g gap-5'>
             {
                 data.map(items => <div key={items._id} className="flex border-2 transition hover:scale-105 flex-col max-w-md p-6 rounded-md ">
                     <img

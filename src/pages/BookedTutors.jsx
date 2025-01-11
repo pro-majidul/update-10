@@ -48,12 +48,12 @@ const BookedTutors = () => {
 
     }
     return (
-        <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-            <div className=" overflow-x-auto">
-                <table className="table">
+        <div className="container  p-2 mx-auto sm:p-4 dark:text-gray-800">
+            <div className=" overflow-x-auto pt-28">
+                <table className="table bg-purple-800">
 
                     <thead>
-                        <tr>
+                        <tr className='text-white'>
 
                             <th>Image</th>
                             <th>Name</th>
@@ -62,7 +62,7 @@ const BookedTutors = () => {
                             <th>Review</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-white'>
 
                         {
                           items &&  items.map(item => <tr key={item._id}>

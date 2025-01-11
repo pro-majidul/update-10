@@ -1,31 +1,39 @@
 import { useEffect, useState } from "react";
 import useUsers from "../hooks/useUsers";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSecureAxios from "../hooks/useSecureAxios";
+import axios from "axios";
 
 const TutorDetails = () => {
     const { user } = useUsers()
     const loaderdata = useLoaderData()
     const { details } = useParams()
     const [datas, setDatas] = useState(loaderdata)
-    const [loader, setLoader] = useState(true)
-    const axiosdata = useSecureAxios()
+    const [loader, setLoader] = useState(true);
+    const navigate = useNavigate()
+    // const axiosdata = useSecureAxios()
 
 
     useEffect(() => {
         try {
-            axiosdata.get(`/tutors/${details}?email=${user.email}`)
+            axios.get(`http://localhost:5000/tutors/${details}`)
                 .then(res => {
+                    console.log(res);
                     setDatas(res.data)
                     setLoader(false)
                 })
         } catch {
             setLoader(false)
         }
-    }, [user.email])
+    }, [])
 
     const handelBooked = async () => {
+        if(!user){
+            toast.error('Please Login first')
+            navigate('/login')
+            return 
+        }
 
         if (datas.email === user.email) {
             return toast.error('Can not Booked Own Tutorials')
@@ -57,14 +65,18 @@ const TutorDetails = () => {
 
 
     if (loader) {
-        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return <div className='flex items-center justify-center min-h-screen'>
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+    </div>
     }
     return (
         <section >
-            <div className="container max-w-6xl p-6 mx-auto ">
+            <div className="container max-w-6xl p-6 pt-32 mx-auto ">
                 <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50">
-                    <img src={datas.photo} alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
-                    <div className="p-6 space-y-4 lg:col-span-5">
+                    <div className=" w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500">
+                        <img src={datas.photo} alt=""  className="h-full w-full" />
+                    </div>
+                    <div className="p-6 space-y-4 lg:col-span-5 text-black">
                         <h3 className="text-xl font-semibold sm:text-2xl">Name : {datas.name}</h3>
                         <span className="text-xl md:text-2xl dark:text-gray-600">Language : {datas.language}</span>
                         <p><span>DesCriptions </span> {datas.description}</p>

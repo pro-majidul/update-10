@@ -27,9 +27,9 @@ const AddTutorials = () => {
 
     }
     return (
-        <div className="bg-bannerImg  bg-no-repeat bg-cover bg-center md:p-20">
+        <div className="bg-bannerImg  bg-no-repeat bg-cover bg-center md:p-28">
 
-            <div className='bg-[#F4F3F0] p-10'>
+            <div className='bg-[#F4F3F0] p-10 pt-28'>
                 <form onSubmit={handelAddTutorials} className="card-body">
                     <div className="grid md:grid-cols-2 gap-10">
                         <div className="form-control">

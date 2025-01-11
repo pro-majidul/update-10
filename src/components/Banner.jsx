@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <section >
-            <div className="container flex flex-col-reverse justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+            <div className="container  flex flex-col-reverse justify-center items-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
                 <div className="flex flex-col justify-center  text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                     <h1 className="text-3xl font-bold leading-none sm:text-6xl">Learn Languages
                         <span className="dark:text-violet-600"> Achieve Dreams</span> with Expert Tutors 
@@ -18,7 +18,7 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className="flex items-center justify-center  mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWuB9vwiCEJsIV03O_QIM9UdCaAaTiCTEHYQ&s" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+                    <img src="https://i.ibb.co.com/fSHmt75/pexels-mart-production-8472919.jpg" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
                 </div>
             </div>
         </section>
